@@ -18,21 +18,26 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
             color: #333;
         }
 
         header {
-            background-color: #1a73e8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 16px 0;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         header h1 {
             text-align: center;
-            font-size: 28px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .container {
@@ -485,6 +490,607 @@
         .modal-footer .btn {
             padding: 10px 20px;
             font-size: 14px;
+        }
+
+        /* ========== App-Style Mobile Design ========== */
+        
+        /* Page Header */
+        .page-header {
+            margin-bottom: 20px;
+        }
+        
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 8px;
+        }
+        
+        /* Action Grid */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .action-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            min-height: 100px;
+        }
+        
+        .action-card.primary {
+            background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);
+            color: white;
+        }
+        
+        .action-card.secondary {
+            background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+            color: white;
+        }
+        
+        .action-card:active {
+            transform: scale(0.98);
+        }
+        
+        .action-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .action-text {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        /* Ticket List */
+        .ticket-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .ticket-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .ticket-card:active {
+            transform: scale(0.99);
+        }
+        
+        .ticket-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ticket-date {
+            color: white;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .date-icon {
+            font-size: 16px;
+        }
+        
+        .ticket-section {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .ticket-body {
+            padding: 16px;
+        }
+        
+        .ticket-info-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .info-value.sold {
+            color: #51cf66;
+        }
+        
+        .ticket-summary {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+        
+        .summary-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .summary-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+        }
+        
+        .summary-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .summary-value.remaining {
+            color: #ff6b6b;
+        }
+        
+        .summary-value.total {
+            color: #1a73e8;
+        }
+        
+        .ticket-actions {
+            display: flex;
+            gap: 8px;
+            padding: 0 16px 16px 16px;
+        }
+        
+        .ticket-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .ticket-btn.success {
+            background: #34a853;
+            color: white;
+        }
+        
+        .ticket-btn.success:active {
+            background: #2d8e47;
+        }
+        
+        .ticket-btn.danger {
+            background: #ea4335;
+            color: white;
+        }
+        
+        .ticket-btn.danger:active {
+            background: #c5221f;
+        }
+        
+        /* Transaction List */
+        .transaction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .transaction-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .transaction-card.purchase {
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .transaction-card.sale {
+            border-left: 4px solid #51cf66;
+        }
+        
+        .transaction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8f9fa;
+        }
+        
+        .transaction-type {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .transaction-type.purchase {
+            color: #ff6b6b;
+        }
+        
+        .transaction-type.sale {
+            color: #51cf66;
+        }
+        
+        .type-icon {
+            font-size: 16px;
+        }
+        
+        .transaction-time {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .transaction-body {
+            padding: 16px;
+        }
+        
+        .transaction-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .concert-info {
+            flex: 1;
+        }
+        
+        .concert-date {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .concert-section {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .transaction-amount {
+            text-align: right;
+        }
+        
+        .amount-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        
+        .transaction-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+        
+        .detail-item span {
+            color: #666;
+        }
+        
+        .detail-item strong {
+            color: #333;
+        }
+        
+        .transaction-footer {
+            padding: 0 16px 12px 16px;
+        }
+        
+        .delete-btn {
+            width: 100%;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            color: #ea4335;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .delete-btn:active {
+            background: #e9ecef;
+        }
+        
+        /* Stats Cards Modern */
+        .stats-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card-modern {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        .stat-card-modern.purchase {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+        }
+        
+        .stat-card-modern.sale {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+        }
+        
+        .stat-card-modern.profit {
+            background: linear-gradient(135deg, #4c6ef5 0%, #3b5bdb 100%);
+        }
+        
+        .stat-card-modern.loss {
+            background: linear-gradient(135deg, #fa5252 0%, #e03131 100%);
+        }
+        
+        .stat-icon {
+            font-size: 40px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .stat-content {
+            flex: 1;
+        }
+        
+        .stat-card-modern .stat-label {
+            color: rgba(255,255,255,0.9);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
+        .stat-card-modern .stat-value {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        /* Summary Section */
+        .summary-section {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .summary-grid .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .summary-grid .summary-icon {
+            font-size: 28px;
+        }
+        
+        .summary-grid .summary-content {
+            flex: 1;
+        }
+        
+        .summary-grid .summary-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 2px;
+        }
+        
+        .summary-grid .summary-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Recent Section */
+        .recent-section {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .transaction-list.compact {
+            gap: 8px;
+        }
+        
+        .transaction-card-compact {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+        }
+        
+        .transaction-card-compact.purchase {
+            border-left-color: #ff6b6b;
+        }
+        
+        .transaction-card-compact.sale {
+            border-left-color: #51cf66;
+        }
+        
+        .compact-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        
+        .compact-type {
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .compact-type.purchase {
+            color: #ff6b6b;
+        }
+        
+        .compact-type.sale {
+            color: #51cf66;
+        }
+        
+        .compact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .compact-section {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .compact-time {
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .compact-right {
+            text-align: right;
+        }
+        
+        .compact-quantity {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+        
+        .compact-amount {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-icon {
+            font-size: 80px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .empty-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+        
+        /* Pagination */
+        .pagination-wrapper {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            body {
+                background-color: #f8f9fa;
+            }
+            
+            .container {
+                padding: 0;
+            }
+            
+            main {
+                border-radius: 0;
+                padding: 16px;
+                margin-top: 0;
+                box-shadow: none;
+            }
+            
+            .page-title {
+                font-size: 22px;
+            }
+            
+            .action-grid {
+                gap: 10px;
+            }
+            
+            .action-card {
+                padding: 18px 10px;
+                min-height: 90px;
+            }
+            
+            .action-icon {
+                font-size: 28px;
+            }
+            
+            .action-text {
+                font-size: 13px;
+            }
         }
     </style>
     @yield('extra_css')

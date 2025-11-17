@@ -3,67 +3,85 @@
 @section('title', '交易記錄')
 
 @section('content')
-    <div class="section-title">交易記錄</div>
+    <div class="page-header">
+        <h2 class="page-title">📝 交易記錄</h2>
+    </div>
 
-    <div style="margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
-        <a href="{{ route('tickets.index') }}" class="btn btn-primary">門票管理</a>
-        <a href="{{ route('tickets.statistics') }}" class="btn btn-primary">統計信息</a>
+    <div class="action-grid" style="grid-template-columns: 1fr 1fr;">
+        <a href="{{ route('tickets.index') }}" class="action-card secondary">
+            <div class="action-icon">🎫</div>
+            <div class="action-text">門票管理</div>
+        </a>
+        <a href="{{ route('tickets.statistics') }}" class="action-card secondary">
+            <div class="action-icon">📊</div>
+            <div class="action-text">統計信息</div>
+        </a>
     </div>
 
     @if($transactions->count() > 0)
-        <div class="table-wrapper">
-            <table>
-            <thead>
-                <tr>
-                    <th>演唱會日期</th>
-                    <th>日期時間</th>
-                    <th>座位區域</th>
-                    <th>類型</th>
-                    <th>數量</th>
-                    <th>單價</th>
-                    <th>幣種</th>
-                    <th>折合港幣</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($transactions as $transaction)
-                    <tr style="background-color: {{ $transaction->type === 'purchase' ? '#fff3cd' : '#d4edda' }};">
-                        <td>{{ $transaction->concert_date->format('Y-m-d') }}</td>
-                        <td>{{ $transaction->created_at->format('Y-m-d H:i:s') }}</td>
-                        <td><strong>{{ $transaction->section }}</strong></td>
-                        <td>
-                            <span class="badge" style="padding: 5px 10px; border-radius: 3px; font-weight: bold; color: white; background-color: {{ $transaction->type === 'purchase' ? '#ff6b6b' : '#51cf66' }};">
-                                {{ $transaction->type === 'purchase' ? '購入' : '賣出' }}
-                            </span>
-                        </td>
-                        <td>{{ $transaction->quantity }} 張</td>
-                        <td>
-                            @if($transaction->currency === 'HKD')
-                                HK${{ number_format($transaction->price, 2) }}
-                            @else
-                                ¥{{ number_format($transaction->price, 2) }}
-                            @endif
-                        </td>
-                        <td>{{ $transaction->currency === 'HKD' ? '港幣' : '人民幣' }}</td>
-                        <td><strong>HK${{ number_format($transaction->total_hkd, 2) }}</strong></td>
-                        <td>
-                            <form method="POST" action="{{ route('transactions.destroy', $transaction) }}" style="display:inline;" id="deleteTransactionForm-{{ $transaction->id }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" class="btn btn-danger btn-sm" onclick="openDeleteTransactionModal(document.getElementById('deleteTransactionForm-{{ $transaction->id }}'))">刪除</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-            </table>
+        <div class="transaction-list">
+            @foreach($transactions as $transaction)
+                <div class="transaction-card {{ $transaction->type }}">
+                    <div class="transaction-header">
+                        <div class="transaction-type {{ $transaction->type }}">
+                            <span class="type-icon">{{ $transaction->type === 'purchase' ? '📥' : '📤' }}</span>
+                            {{ $transaction->type === 'purchase' ? '購入' : '賣出' }}
+                        </div>
+                        <div class="transaction-time">
+                            {{ $transaction->created_at->format('m-d H:i') }}
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-body">
+                        <div class="transaction-main">
+                            <div class="concert-info">
+                                <div class="concert-date">📅 {{ $transaction->concert_date->format('Y-m-d') }}</div>
+                                <div class="concert-section">{{ $transaction->section }}</div>
+                            </div>
+                            <div class="transaction-amount">
+                                <div class="amount-value">HK${{ number_format($transaction->total_hkd, 2) }}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="transaction-details">
+                            <div class="detail-item">
+                                <span>數量</span>
+                                <strong>{{ $transaction->quantity }} 張</strong>
+                            </div>
+                            <div class="detail-item">
+                                <span>單價</span>
+                                <strong>
+                                    @if($transaction->currency === 'HKD')
+                                        HK${{ number_format($transaction->price, 2) }}
+                                    @else
+                                        ¥{{ number_format($transaction->price, 2) }}
+                                    @endif
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-footer">
+                        <form method="POST" action="{{ route('transactions.destroy', $transaction) }}" id="deleteTransactionForm-{{ $transaction->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="delete-btn" onclick="openDeleteTransactionModal(document.getElementById('deleteTransactionForm-{{ $transaction->id }}'))">
+                                🗑️ 刪除記錄
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
         </div>
 
-        <div style="margin-top: 20px; text-align: center; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+        <div class="pagination-wrapper">
             {{ $transactions->links() }}
         </div>
     @else
-        <p class="text-center text-muted">暫無交易記錄</p>
+        <div class="empty-state">
+            <div class="empty-icon">📋</div>
+            <div class="empty-text">還沒有交易記錄</div>
+            <a href="{{ route('tickets.index') }}" class="btn btn-primary">返回門票管理</a>
+        </div>
     @endif
 @endsection
