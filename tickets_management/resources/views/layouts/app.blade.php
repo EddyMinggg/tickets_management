@@ -47,7 +47,6 @@
             padding: 30px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-top: 20px;
-            overflow-x: hidden; /* 防止main容器出現滾動條 */
         }
 
         .btn {
@@ -164,16 +163,11 @@
 
         /* 表格滾動容器 */
         .table-wrapper {
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch !important;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             margin-top: 20px;
-            margin-left: -30px;  /* 抵消main的padding */
-            margin-right: -30px; /* 抵消main的padding */
-            padding-left: 30px;
-            padding-right: 30px;
             border-radius: 8px;
             background: white;
-            position: relative;
         }
 
         thead {
@@ -306,16 +300,12 @@
             }
 
             .table-wrapper {
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
                 border-radius: 8px;
                 margin-top: 20px;
-                margin-left: -15px;  /* 抵消手機版main的padding */
-                margin-right: -15px;
-                padding-left: 15px;
-                padding-right: 15px;
                 background: white;
-                max-width: 100vw;
+                width: 100%;
             }
 
             th, td {
@@ -746,13 +736,6 @@
             // 用戶通過 Safari 訪問，可以提示添加到主螢幕
             console.log('💡 提示：可以添加到主螢幕以獲得更好的體驗');
         }
-
-        // 禁用不必要的 zoom 在某些事件上
-        document.addEventListener('touchmove', function(e) {
-            if (e.scale !== 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
     </script>
 
     <style>
@@ -783,8 +766,10 @@
             body {
                 padding: 0;
                 margin: 0;
-                width: 100vw;
-                height: 100vh;
+                width: 100%;
+                min-height: 100vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
                 -webkit-user-select: none;
                 user-select: none;
                 -webkit-touch-callout: none;
