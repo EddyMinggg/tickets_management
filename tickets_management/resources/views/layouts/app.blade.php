@@ -6,7 +6,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="門票管理">
-    <meta name="theme-color" content="#1a73e8">
+    <meta name="theme-color" content="#667eea" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#7c3aed" media="(prefers-color-scheme: dark)">
     <link rel="manifest" href="{{ asset('manifest.json') }}">
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231a73e8' width='192' height='192'/><text x='96' y='120' font-size='90' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial'>🎵</text></svg>">
     <title>@yield('title', '演唱會門票管理系統')</title>
@@ -1090,6 +1091,370 @@
             
             .action-text {
                 font-size: 13px;
+            }
+        }
+        
+        /* ========== Dark Mode ========== */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #0f0f0f;
+                color: #e4e4e7;
+            }
+            
+            header {
+                background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+                box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+            }
+            
+            main {
+                background-color: #1a1a1a;
+                box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+            }
+            
+            .container {
+                background-color: transparent;
+            }
+            
+            /* Page Elements */
+            .page-title {
+                color: #a78bfa;
+            }
+            
+            /* Action Cards */
+            .action-card.primary {
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            }
+            
+            .action-card.secondary {
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            }
+            
+            /* Ticket Cards */
+            .ticket-card {
+                background: #262626;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            }
+            
+            .ticket-header {
+                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            }
+            
+            .ticket-section {
+                background: rgba(255,255,255,0.2);
+            }
+            
+            .info-label {
+                color: #a1a1aa;
+            }
+            
+            .info-value {
+                color: #e4e4e7;
+            }
+            
+            .info-value.sold {
+                color: #34d399;
+            }
+            
+            .ticket-summary {
+                background: #1f1f1f;
+            }
+            
+            .summary-label {
+                color: #a1a1aa;
+            }
+            
+            .summary-value.remaining {
+                color: #fb7185;
+            }
+            
+            .summary-value.total {
+                color: #60a5fa;
+            }
+            
+            /* Transaction Cards */
+            .transaction-card {
+                background: #262626;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+            
+            .transaction-card.purchase {
+                border-left-color: #f87171;
+            }
+            
+            .transaction-card.sale {
+                border-left-color: #34d399;
+            }
+            
+            .transaction-header {
+                background: #1f1f1f;
+            }
+            
+            .transaction-type.purchase {
+                color: #fca5a5;
+            }
+            
+            .transaction-type.sale {
+                color: #6ee7b7;
+            }
+            
+            .transaction-time {
+                color: #a1a1aa;
+            }
+            
+            .concert-date {
+                color: #a1a1aa;
+            }
+            
+            .concert-section {
+                color: #e4e4e7;
+            }
+            
+            .amount-value {
+                color: #60a5fa;
+            }
+            
+            .transaction-details {
+                background: #1f1f1f;
+            }
+            
+            .detail-item span {
+                color: #a1a1aa;
+            }
+            
+            .detail-item strong {
+                color: #e4e4e7;
+            }
+            
+            .delete-btn {
+                background: #1f1f1f;
+                border-color: #3f3f46;
+                color: #f87171;
+            }
+            
+            .delete-btn:active {
+                background: #262626;
+            }
+            
+            /* Stats Cards */
+            .stat-card-modern.purchase {
+                background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+                box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+            }
+            
+            .stat-card-modern.sale {
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+            }
+            
+            .stat-card-modern.profit {
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+            }
+            
+            .stat-card-modern.loss {
+                background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+                box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+            }
+            
+            /* Summary Section */
+            .summary-section,
+            .recent-section {
+                background: #1a1a1a;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+            
+            .section-subtitle {
+                color: #e4e4e7;
+            }
+            
+            .summary-grid .summary-item {
+                background: #262626;
+            }
+            
+            .summary-grid .summary-value {
+                color: #60a5fa;
+            }
+            
+            .summary-grid .summary-label {
+                color: #a1a1aa;
+            }
+            
+            /* Compact Transaction Cards */
+            .transaction-card-compact {
+                background: #262626;
+            }
+            
+            .transaction-card-compact.purchase {
+                border-left-color: #f87171;
+            }
+            
+            .transaction-card-compact.sale {
+                border-left-color: #34d399;
+            }
+            
+            .compact-type.purchase {
+                color: #fca5a5;
+            }
+            
+            .compact-type.sale {
+                color: #6ee7b7;
+            }
+            
+            .compact-section {
+                color: #e4e4e7;
+            }
+            
+            .compact-time {
+                color: #a1a1aa;
+            }
+            
+            .compact-quantity {
+                color: #a1a1aa;
+            }
+            
+            .compact-amount {
+                color: #60a5fa;
+            }
+            
+            /* Buttons */
+            .ticket-btn.success {
+                background: #10b981;
+                box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+            }
+            
+            .ticket-btn.success:active {
+                background: #059669;
+            }
+            
+            .ticket-btn.danger {
+                background: #dc2626;
+                box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+            }
+            
+            .ticket-btn.danger:active {
+                background: #b91c1c;
+            }
+            
+            .btn-primary {
+                background-color: #3b82f6;
+                box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+            }
+            
+            .btn-primary:hover {
+                background-color: #2563eb;
+            }
+            
+            .btn-success {
+                background-color: #10b981;
+                box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+            }
+            
+            .btn-success:hover {
+                background-color: #059669;
+            }
+            
+            .btn-danger {
+                background-color: #dc2626;
+                box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+            }
+            
+            .btn-danger:hover {
+                background-color: #b91c1c;
+            }
+            
+            /* Forms */
+            .form-group label {
+                color: #e4e4e7;
+            }
+            
+            .form-control {
+                background-color: #262626;
+                border-color: #3f3f46;
+                color: #e4e4e7;
+            }
+            
+            .form-control:focus {
+                border-color: #8b5cf6;
+                background-color: #2d2d2d;
+            }
+            
+            /* Alerts */
+            .alert-success {
+                background-color: #064e3b;
+                border-color: #059669;
+                color: #d1fae5;
+            }
+            
+            .alert-error {
+                background-color: #7f1d1d;
+                border-color: #b91c1c;
+                color: #fecaca;
+            }
+            
+            /* Modal */
+            .modal {
+                background-color: rgba(0, 0, 0, 0.85);
+            }
+            
+            .modal-content {
+                background-color: #1a1a1a;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+            }
+            
+            .modal-header {
+                color: #e4e4e7;
+            }
+            
+            .modal-body {
+                color: #a1a1aa;
+            }
+            
+            /* Tables (if any remain) */
+            table {
+                background-color: #1a1a1a;
+            }
+            
+            thead {
+                background-color: #262626;
+                border-bottom-color: #3f3f46;
+            }
+            
+            th {
+                color: #e4e4e7;
+            }
+            
+            td {
+                color: #d4d4d8;
+                border-bottom-color: #3f3f46;
+            }
+            
+            tbody tr:hover {
+                background-color: #262626;
+            }
+            
+            /* Empty State */
+            .empty-state {
+                color: #a1a1aa;
+            }
+            
+            .empty-text {
+                color: #71717a;
+            }
+            
+            /* Stats (old style if exists) */
+            .stats .stat-card {
+                background: #262626;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+            
+            .stat-label {
+                color: #a1a1aa;
+            }
+            
+            .stat-value {
+                color: #e4e4e7;
             }
         }
     </style>
