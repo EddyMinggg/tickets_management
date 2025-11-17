@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: ticket-management
+    env: php
+    plan: free
+    buildCommand: |
+      apt-get update && apt-get install -y composer
+      composer install --no-dev --optimize-autoloader
+      npm install
+    startCommand: php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=10000
+    envVars:
+      - key: APP_NAME
+        value: TicketManagement
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: single
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: PORT
+        value: 10000
