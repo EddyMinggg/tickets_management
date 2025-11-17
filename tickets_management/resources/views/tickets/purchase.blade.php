@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="btn-group">
+        <div class="btn-group" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
             <button type="submit" class="btn btn-success">確認購入</button>
             <a href="{{ route('tickets.purchase.batch') }}" class="btn btn-primary">批量購入</a>
             <a href="{{ route('tickets.index') }}" class="btn btn-primary">返回列表</a>

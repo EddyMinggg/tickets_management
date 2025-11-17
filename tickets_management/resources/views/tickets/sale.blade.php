@@ -5,15 +5,31 @@
 @section('content')
     <div class="section-title">賣出門票</div>
 
-    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-        <p><strong>演唱會日期：</strong>{{ $ticket->concert_date->format('Y-m-d') }}</p>
-        <p><strong>座位區域：</strong>{{ $ticket->section }}</p>
-        <p><strong>購入價格：</strong>HK${{ number_format($ticket->purchase_price, 2) }}</p>
-        <p><strong>購入數量：</strong>{{ $ticket->quantity }}</p>
-        <p><strong>已賣出：</strong>{{ $ticket->sold_quantity }}</p>
-        <p><strong>可賣出數量：</strong>{{ $remaining }}</p>
-        <p><strong>手續費：</strong>HK${{ number_format($ticket->commission, 2) }}</p>
-        <p><strong>人民幣匯率：</strong>{{ number_format($ticket->exchange_rate, 4) }}</p>
+    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+        <div>
+            <p><strong>演唱會日期：</strong><br>{{ $ticket->concert_date->format('Y-m-d') }}</p>
+        </div>
+        <div>
+            <p><strong>座位區域：</strong><br>{{ $ticket->section }}</p>
+        </div>
+        <div>
+            <p><strong>購入價格：</strong><br>HK${{ number_format($ticket->purchase_price, 2) }}</p>
+        </div>
+        <div>
+            <p><strong>購入數量：</strong><br>{{ $ticket->quantity }} 張</p>
+        </div>
+        <div>
+            <p><strong>已賣出：</strong><br>{{ $ticket->sold_quantity }} 張</p>
+        </div>
+        <div>
+            <p><strong>可賣出數量：</strong><br><strong style="color: #51cf66;">{{ $remaining }} 張</strong></p>
+        </div>
+        <div>
+            <p><strong>手續費：</strong><br>HK${{ number_format($ticket->commission, 2) }}</p>
+        </div>
+        <div>
+            <p><strong>人民幣匯率：</strong><br>{{ number_format($ticket->exchange_rate, 4) }}</p>
+        </div>
     </div>
 
     <form method="POST" action="{{ route('tickets.store.sale', $ticket) }}">
@@ -55,7 +71,7 @@
             </div>
         </div>
 
-        <div class="btn-group">
+        <div class="btn-group" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
             <button type="submit" class="btn btn-success">確認賣出</button>
             <a href="{{ route('tickets.index') }}" class="btn btn-primary">返回列表</a>
         </div>

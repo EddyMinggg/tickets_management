@@ -5,7 +5,7 @@
 @section('content')
     <div class="section-title">統計信息</div>
 
-    <div style="margin-bottom: 20px;">
+    <div style="margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
         <a href="{{ route('tickets.index') }}" class="btn btn-primary">門票管理</a>
         <a href="{{ route('tickets.records') }}" class="btn btn-primary">交易記錄</a>
     </div>
@@ -34,7 +34,8 @@
         <h3 style="margin-bottom: 15px; border-bottom: 2px solid #1a73e8; padding-bottom: 10px;">最近交易</h3>
         
         @if($transactions->count() > 0)
-            <table>
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <table>
                 <thead>
                     <tr>
                         <th>演唱會日期</th>
@@ -79,7 +80,8 @@
                         </tr>
                     @endforeach
                 </tbody>
-            </table>
+                </table>
+            </div>
         @else
             <p class="text-center text-muted">暫無交易記錄</p>
         @endif

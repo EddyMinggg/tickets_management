@@ -242,21 +242,155 @@
             color: #333;
         }
 
+        /* Mobile First Responsive Design */
         @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
+            header h1 {
+                font-size: 20px;
             }
 
+            .container {
+                padding: 12px;
+            }
+
+            main {
+                padding: 15px;
+                margin-top: 10px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .btn {
+                padding: 12px 16px;
+                font-size: 14px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .section-title {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            /* Responsive Table */
             table {
                 font-size: 12px;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                white-space: nowrap;
             }
 
             th, td {
-                padding: 8px;
+                padding: 10px 8px;
+                min-width: 80px;
+            }
+
+            th {
+                background-color: #1a73e8;
+                color: white;
+            }
+
+            tbody tr:hover {
+                background-color: transparent;
             }
 
             .action-buttons {
-                flex-wrap: wrap;
+                flex-direction: column;
+                gap: 4px;
+                width: 100%;
+            }
+
+            .action-buttons a,
+            .action-buttons button {
+                padding: 8px 10px;
+                font-size: 12px;
+                width: 100%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 15px;
+                border-left-width: 3px;
+            }
+
+            .stat-value {
+                font-size: 20px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 16px; /* Prevent iOS zoom */
+            }
+
+            /* Modal responsive */
+            .modal-content {
+                min-width: 90vw;
+                max-width: 90vw;
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .modal-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .modal-buttons button {
+                width: 100%;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 18px;
+            }
+
+            .container {
+                padding: 8px;
+            }
+
+            main {
+                padding: 12px;
+            }
+
+            .btn {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            th, td {
+                padding: 8px 6px;
+                min-width: 70px;
+                font-size: 11px;
+            }
+
+            .stat-label {
+                font-size: 11px;
+            }
+
+            .stat-value {
+                font-size: 18px;
+            }
+
+            .modal-content {
+                min-width: 95vw;
+                max-width: 95vw;
             }
         }
 

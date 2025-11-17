@@ -5,13 +5,14 @@
 @section('content')
     <div class="section-title">交易記錄</div>
 
-    <div style="margin-bottom: 20px;">
+    <div style="margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
         <a href="{{ route('tickets.index') }}" class="btn btn-primary">門票管理</a>
         <a href="{{ route('tickets.statistics') }}" class="btn btn-primary">統計信息</a>
     </div>
 
     @if($transactions->count() > 0)
-        <table>
+        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; background: white; border-radius: 8px;">
+            <table>
             <thead>
                 <tr>
                     <th>演唱會日期</th>
@@ -56,9 +57,10 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+            </table>
+        </div>
 
-        <div style="margin-top: 20px; text-align: center;">
+        <div style="margin-top: 20px; text-align: center; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
             {{ $transactions->links() }}
         </div>
     @else
