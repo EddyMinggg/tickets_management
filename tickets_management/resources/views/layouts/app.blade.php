@@ -47,6 +47,7 @@
             padding: 30px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-top: 20px;
+            overflow-x: hidden; /* 防止main容器出現滾動條 */
         }
 
         .btn {
@@ -156,17 +157,23 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin: 0; /* 移除上邊距，讓容器控制 */
             min-width: 1000px; /* 強制最小寬度，使其超出容器寬度 */
+            display: table; /* 確保是表格佈局 */
         }
 
         /* 表格滾動容器 */
         .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
             margin-top: 20px;
+            margin-left: -30px;  /* 抵消main的padding */
+            margin-right: -30px; /* 抵消main的padding */
+            padding-left: 30px;
+            padding-right: 30px;
             border-radius: 8px;
             background: white;
+            position: relative;
         }
 
         thead {
@@ -292,15 +299,23 @@
             /* Responsive Table */
             table {
                 font-size: 12px;
-                min-width: 100%;
+                min-width: 800px; /* 手機上表格最小寬度，確保需要滾動 */
+                width: max-content;
+                display: table;
+                table-layout: auto;
             }
 
             .table-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
                 border-radius: 8px;
                 margin-top: 20px;
+                margin-left: -15px;  /* 抵消手機版main的padding */
+                margin-right: -15px;
+                padding-left: 15px;
+                padding-right: 15px;
                 background: white;
+                max-width: 100vw;
             }
 
             th, td {
