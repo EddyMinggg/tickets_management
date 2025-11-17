@@ -34,7 +34,7 @@
         <h3 style="margin-bottom: 15px; border-bottom: 2px solid #1a73e8; padding-bottom: 10px;">最近交易</h3>
         
         @if($transactions->count() > 0)
-            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+            <div class="table-wrapper">
                 <table>
                 <thead>
                     <tr>

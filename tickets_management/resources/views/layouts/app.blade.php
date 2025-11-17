@@ -157,6 +157,16 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            min-width: 1000px; /* 強制最小寬度，使其超出容器寬度 */
+        }
+
+        /* 表格滾動容器 */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: white;
         }
 
         thead {
@@ -282,15 +292,23 @@
             /* Responsive Table */
             table {
                 font-size: 12px;
-                display: block;
+                min-width: 100%;
+            }
+
+            .table-wrapper {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
-                white-space: nowrap;
+                border-radius: 8px;
+                margin-top: 20px;
+                background: white;
             }
 
             th, td {
                 padding: 10px 8px;
-                min-width: 80px;
+                min-width: 90px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             th {

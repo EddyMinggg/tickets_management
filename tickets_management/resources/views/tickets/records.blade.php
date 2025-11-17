@@ -11,7 +11,7 @@
     </div>
 
     @if($transactions->count() > 0)
-        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; background: white; border-radius: 8px;">
+        <div class="table-wrapper">
             <table>
             <thead>
                 <tr>
