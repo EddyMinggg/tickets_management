@@ -39,6 +39,51 @@
             font-size: 20px;
             font-weight: 700;
             letter-spacing: 0.5px;
+            flex: 1;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .theme-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover .theme-icon {
+            animation: spin 0.6s linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .container {
@@ -1114,6 +1159,16 @@
                 background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
                 box-shadow: 0 2px 16px rgba(0,0,0,0.4);
             }
+
+            .theme-toggle {
+                background: rgba(255, 255, 255, 0.15);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .theme-toggle:hover {
+                background: rgba(255, 255, 255, 0.25);
+                border-color: rgba(255, 255, 255, 0.5);
+            }
             
             main {
                 background-color: #1a1a1a;
@@ -1471,7 +1526,12 @@
 </head>
 <body>
     <header>
-        <h1>🎵 演唱會門票管理系統</h1>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
+            <h1 style="margin: 0;">🎵 演唱會門票管理系統</h1>
+            <button id="themeToggleBtn" class="theme-toggle" title="切換明亮/深色模式">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
     </header>
 
     <div class="container">
@@ -1626,6 +1686,64 @@
                 closeDeleteTicketModal();
             }
         });
+
+        // 主題切換功能
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = themeToggleBtn.querySelector('.theme-icon');
+        
+        // 初始化主題
+        function initTheme() {
+            // 檢查是否有保存的主題偏好
+            const savedTheme = localStorage.getItem('theme-preference');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // 決定使用的主題
+            let usesDarkMode = false;
+            if (savedTheme === 'dark') {
+                usesDarkMode = true;
+            } else if (savedTheme === 'light') {
+                usesDarkMode = false;
+            } else {
+                usesDarkMode = prefersDark;
+            }
+            
+            // 應用主題
+            applyTheme(usesDarkMode);
+        }
+        
+        // 應用主題
+        function applyTheme(isDarkMode) {
+            if (isDarkMode) {
+                document.documentElement.style.colorScheme = 'dark';
+                localStorage.setItem('theme-preference', 'dark');
+                themeIcon.textContent = '☀️';
+                themeToggleBtn.title = '切換至明亮模式';
+            } else {
+                document.documentElement.style.colorScheme = 'light';
+                localStorage.setItem('theme-preference', 'light');
+                themeIcon.textContent = '🌙';
+                themeToggleBtn.title = '切換至深色模式';
+            }
+        }
+        
+        // 切換主題
+        themeToggleBtn.addEventListener('click', () => {
+            const isDarkMode = localStorage.getItem('theme-preference') === 'dark';
+            applyTheme(!isDarkMode);
+        });
+        
+        // 監聽系統主題變更
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            const savedTheme = localStorage.getItem('theme-preference');
+            // 只有在沒有保存偏好時才跟隨系統
+            if (!savedTheme) {
+                applyTheme(e.matches);
+            }
+        });
+        
+        // 頁面加載時初始化主題
+        document.addEventListener('DOMContentLoaded', initTheme);
+        initTheme();
     </script>
 
     <!-- PWA Support -->
@@ -1634,7 +1752,9 @@
         let isOnline = navigator.onLine;
         let swRegistration = null;
 
+        // 暫時禁用 Service Worker 以便開發調試
         // 註冊 Service Worker（離線支援核心）
+        /*
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('{{ asset("service-worker.js") }}')
@@ -1661,6 +1781,7 @@
                     });
             });
         }
+        */
 
         // 檢測網路連接狀態
         window.addEventListener('online', () => {
