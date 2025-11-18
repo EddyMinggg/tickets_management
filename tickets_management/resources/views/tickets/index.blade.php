@@ -79,6 +79,12 @@
                                 💰 賣出
                             </a>
                         @endif
+                        <a href="{{ route('tickets.sales.create', $ticket) }}" class="ticket-btn info" title="查看或添加詳細售出信息">
+                            📋 售出詳情
+                        </a>
+                        <a href="{{ route('tickets.sources.create', $ticket) }}" class="ticket-btn info" title="查看或編輯購入來源信息">
+                            🔍 購入來源
+                        </a>
                         <form method="POST" action="{{ route('tickets.destroy', $ticket) }}" style="flex: 1;" id="deleteTicketForm-{{ $ticket->id }}">
                             @csrf
                             @method('DELETE')

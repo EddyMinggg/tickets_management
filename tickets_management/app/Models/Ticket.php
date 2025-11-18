@@ -49,4 +49,28 @@ class Ticket extends Model
     {
         return $this->purchase_price * $this->sold_quantity * $this->exchange_rate;
     }
+
+    /**
+     * 購入來源列表
+     */
+    public function sources()
+    {
+        return $this->hasMany(TicketSource::class);
+    }
+
+    /**
+     * 售出列表
+     */
+    public function sales()
+    {
+        return $this->hasMany(TicketSale::class);
+    }
+
+    /**
+     * 交易記錄
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

@@ -704,6 +704,15 @@
         .ticket-btn.danger:active {
             background: #c5221f;
         }
+
+        .ticket-btn.info {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .ticket-btn.info:active {
+            background: #2563eb;
+        }
         
         /* Transaction List */
         .transaction-list {
