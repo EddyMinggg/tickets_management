@@ -231,48 +231,46 @@
         }
     }
 
-    @media (prefers-color-scheme: dark) {
-        .form-card {
-            background: #1a1a1a;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-        }
+    [data-theme="dark"] .form-card {
+        background: #1a1a1a;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
 
-        .form-group label {
-            color: #e4e4e7;
-        }
+    [data-theme="dark"] .form-group label {
+        color: #e4e4e7;
+    }
 
-        .form-control {
-            background-color: #262626;
-            border-color: #3f3f46;
-            color: #e4e4e7;
-        }
+    [data-theme="dark"] .form-control {
+        background-color: #262626;
+        border-color: #3f3f46;
+        color: #e4e4e7;
+    }
 
-        .form-control:focus {
-            border-color: #8b5cf6;
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
-            background-color: #2d2d2d;
-        }
+    [data-theme="dark"] .form-control:focus {
+        border-color: #8b5cf6;
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        background-color: #2d2d2d;
+    }
 
-        .form-control.is-invalid {
-            background-color: #5f1814;
-            border-color: #ea4335;
-        }
+    [data-theme="dark"] .form-control.is-invalid {
+        background-color: #5f1814;
+        border-color: #ea4335;
+    }
 
-        h3 {
-            color: #e4e4e7 !important;
-        }
+    [data-theme="dark"] h3 {
+        color: #e4e4e7 !important;
+    }
 
-        div[style*="background: #f0f0f0"] {
-            background: #262626 !important;
-        }
+    [data-theme="dark"] div[style*="background: #f0f0f0"] {
+        background: #262626 !important;
+    }
 
-        div[style*="color: #333"] {
-            color: #e4e4e7 !important;
-        }
+    [data-theme="dark"] div[style*="color: #333"] {
+        color: #e4e4e7 !important;
+    }
 
-        div[style*="color: #666"] {
-            color: #a1a1aa !important;
-        }
+    [data-theme="dark"] div[style*="color: #666"] {
+        color: #a1a1aa !important;
     }
 </style>
 @endsection

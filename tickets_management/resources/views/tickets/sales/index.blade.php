@@ -351,72 +351,70 @@
         }
     }
 
-    @media (prefers-color-scheme: dark) {
-        .sale-card {
-            background: #1a1a1a;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
+    [data-theme="dark"] .sale-card {
+        background: #1a1a1a;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
 
-        .sale-header {
-            background: #262626;
-        }
+    [data-theme="dark"] .sale-header {
+        background: #262626;
+    }
 
-        .sale-buyer {
-            color: #e4e4e7;
-        }
+    [data-theme="dark"] .sale-buyer {
+        color: #e4e4e7;
+    }
 
-        .page-subtitle {
-            color: #a1a1aa;
-        }
+    [data-theme="dark"] .page-subtitle {
+        color: #a1a1aa;
+    }
 
-        .detail-label {
-            color: #a1a1aa;
-        }
+    [data-theme="dark"] .detail-label {
+        color: #a1a1aa;
+    }
 
-        .detail-value {
-            color: #e4e4e7;
-        }
+    [data-theme="dark"] .detail-value {
+        color: #e4e4e7;
+    }
 
-        .detail-value.highlight.profit {
-            color: #34d399;
-        }
+    [data-theme="dark"] .detail-value.highlight.profit {
+        color: #34d399;
+    }
 
-        .sale-address,
-        .sale-notes {
-            background: #262626;
-        }
+    [data-theme="dark"] .sale-address,
+    [data-theme="dark"] .sale-notes {
+        background: #262626;
+    }
 
-        .address-label,
-        .notes-label {
-            color: #a1a1aa;
-        }
+    [data-theme="dark"] .address-label,
+    [data-theme="dark"] .notes-label {
+        color: #a1a1aa;
+    }
 
-        .address-content,
-        .notes-content {
-            color: #e4e4e7;
-        }
+    [data-theme="dark"] .address-content,
+    [data-theme="dark"] .notes-content {
+        color: #e4e4e7;
+    }
 
-        .sale-meta {
-            color: #71717a;
-        }
+    [data-theme="dark"] .sale-meta {
+        color: #71717a;
+    }
 
-        .icon-btn {
-            background: #3f3f46;
-            color: #e4e4e7;
-        }
+    [data-theme="dark"] .icon-btn {
+        background: #3f3f46;
+        color: #e4e4e7;
+    }
 
-        .icon-btn:hover {
-            background: #52525b;
-        }
+    [data-theme="dark"] .icon-btn:hover {
+        background: #52525b;
+    }
 
-        .empty-card {
-            background: #1a1a1a;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
+    [data-theme="dark"] .empty-card {
+        background: #1a1a1a;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
 
-        .empty-text {
-            color: #a1a1aa;
-        }
+    [data-theme="dark"] .empty-text {
+        color: #a1a1aa;
     }
 </style>
 @endsection
